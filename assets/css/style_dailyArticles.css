@@ -1,0 +1,213 @@
+/* ===== Reset / Base ===== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+  line-height: 1.7;
+  background: #fafafa;
+  color: #222;
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 32px) clamp(14px, 4vw, 28px);
+}
+
+/* ===== Typography ===== */
+.page-title {
+  font-size: clamp(22px, 4vw, 36px);
+  line-height: 1.2;
+  text-align: center;
+  margin: 0 0 clamp(16px, 3vw, 28px);
+  color: #2c3e50;
+}
+.section-title {
+  border-left: 6px solid #0077cc;
+  padding-left: 0.6em;
+  margin: clamp(18px, 4vw, 36px) 0 clamp(8px, 1.5vw, 12px);
+  font-size: clamp(18px, 2.8vw, 22px);
+  color: #0077cc;
+}
+
+/* ===== Highlight ===== */
+.highlight-list {
+  background: #e9f3fc;
+  padding: clamp(12px, 2.4vw, 18px);
+  border-radius: 10px;
+  list-style: disc;
+  padding-left: clamp(18px, 3.2vw, 24px);
+  margin: 0;
+}
+.highlight-list li { margin: 0.35em 0; }
+
+/* ===== Market (Table -> Card on small) ===== */
+.market-category { margin-bottom: clamp(16px, 3vw, 24px); }
+.market-category h3 {
+  font-size: clamp(16px, 2.4vw, 20px);
+  margin: 0 0 8px;
+  color: #333;
+}
+
+/* default: table layout (>= 640px) */
+.market-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 10px;
+  display: table;
+}
+.market-table th,
+.market-table td {
+  border: 1px solid #ddd;
+  padding: clamp(8px, 1.6vw, 12px);
+  text-align: left;
+  font-size: clamp(13px, 2.2vw, 15px);
+}
+
+/* small screens: card layout */
+@media (max-width: 639px) {
+  .market-table { display: none; }
+  .market-category .market-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .market-card {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-left: 5px solid #444;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.03);
+  }
+  .market-card .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .market-card .name { font-weight: 600; }
+  .market-card .latest { opacity: .85; }
+  .market-card .pct { font-variant-numeric: tabular-nums; }
+}
+
+/* medium+: show table, hide cards */
+@media (min-width: 640px) {
+  .market-category .market-cards { display: none; }
+}
+
+/* ===== News Cards ===== */
+.news-card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-left: 5px solid #444;
+  padding: clamp(12px, 2.2vw, 18px);
+  border-radius: 10px;
+  margin-bottom: clamp(14px, 2.8vw, 20px);
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);
+}
+.news-title {
+  font-size: clamp(16px, 2.6vw, 20px);
+  color: #333;
+  margin: 0 0 6px;
+}
+.news-card p { margin: 6px 0; font-size: clamp(14px, 2.2vw, 16px); }
+.news-points {
+  list-style: disc;
+  padding-left: clamp(18px, 3vw, 24px);
+  margin: 6px 0 0;
+}
+.news-interpretation { color: #444; }
+
+/* ===== Sources ===== */
+.source-list { padding-left: clamp(16px, 3vw, 22px); margin: 6px 0 0; }
+.source-list li { margin-bottom: 6px; }
+.source-list a {
+  color: #0069c2; text-decoration: none; border-bottom: 1px dashed rgba(0,105,194,.35);
+}
+.source-list a:hover { text-decoration: underline; }
+
+/* ===== Footer ===== */
+.footer-text {
+  text-align: center;
+  color: #888;
+  font-size: clamp(12px, 2vw, 14px);
+  margin-top: clamp(24px, 4vw, 40px);
+}
+
+/* ===== Utilities ===== */
+img, svg, video { max-width: 100%; height: auto; }
+table { width: 100%; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #0077cc; outline-offset: 2px;
+}
+
+/* ===== Container padding tweak on very small ===== */
+@media (max-width: 400px) {
+  .container { padding: 14px; }
+}
+
+/* ===== Dark mode (optional) ===== */
+@media (prefers-color-scheme: dark) {
+  body { background: #0f1115; color: #e6e6e6; }
+  .page-title { color: #e8eef5; }
+  .section-title { color: #77bdf8; border-left-color: #77bdf8; }
+  .highlight-list { background: #142235; }
+  .news-card, .market-card { background: #0f141b; border-color: #1f2937; }
+  .source-list a { color: #8cc7ff; border-bottom-color: rgba(140,199,255,.35); }
+  .footer-text { color: #9aa4b2; }
+  .market-table th, .market-table td { border-color: #1f2937; }
+}
+
+/* === Toggle (details/summary) === */
+.toggle {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  margin: 0.6em 0 1em;
+  overflow: clip;
+}
+.toggle-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.75em 1em;
+  font-weight: 600;
+  display: flex; align-items: center; gap: .5em;
+}
+.toggle-summary::-webkit-details-marker { display: none; }
+.toggle-summary::before {
+  content: "";
+  inline-size: 0.7em; block-size: 0.7em;
+  border-right: 2px solid #666; border-bottom: 2px solid #666;
+  transform: rotate(-45deg);
+  transition: transform .2s ease; margin-right: .25em;
+}
+.toggle[open] .toggle-summary::before { transform: rotate(45deg); }
+.toggle-content { padding: 0 1em 0.8em; border-top: 1px solid #eee; }
+
+/* === Market cards (small screens) === */
+.market-cards { display: none; } /* 中〜大画面では非表示 */
+.market-card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-left: 5px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.03);
+  margin: 8px 0;
+}
+.market-card .row {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 10px; align-items: baseline;
+}
+.market-card .name { font-weight: 600; }
+.market-card .latest { opacity: .85; margin-top: 4px; }
+.market-card .pct { font-variant-numeric: tabular-nums; }
+
+/* 画面幅が小さいとき：テーブルを隠しカード表示に切替 */
+@media (max-width: 639px) {
+  .market-table { display: none; }
+  .market-cards { display: grid; grid-template-columns: 1fr; gap: 8px; }
+}
