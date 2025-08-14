@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>記事 | FinDaily</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 既存のスタイルを流用（必要に応じて変更） -->
+  <link rel="stylesheet" href="https://fin-daily.github.io/Fin-Daily/assets/css/style_dailyArticles.css" />
+
+  <!-- SEO（JSでJSONのseo値から上書き） -->
+  <meta name="description" content="毎朝の相場ハイライトを1枚で。" />
+  <link rel="canonical" href="./article.html" />
+
+  <!-- Open Graph / Twitter（JSで動的に上書き） -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="FinDaily" />
+  <meta property="og:title" content="FinDaily" />
+  <meta property="og:description" content="毎朝の相場ハイライトを1枚で。" />
+  <meta property="og:image" content="https://fin-daily.github.io/Fin-Daily/assets/images/XCard.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@FinDaily_00" />
+  <meta name="twitter:title" content="FinDaily" />
+  <meta name="twitter:description" content="毎朝の相場ハイライトを1枚で。" />
+  <meta name="twitter:image" content="https://fin-daily.github.io/Fin-Daily/assets/images/XCard.png" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 id="page-title" class="page-title">読み込み中…</h1>
+    </header>
+
+    <!-- 記事本体をここに描画 -->
+    <main id="article"></main>
+
+    <footer>
+      <p class="footer-text">© 2025 Fin Daily</p>
+    </footer>
+  </div>
+
+  <!-- 記事レンダラ -->
+  <script defer src="https://fin-daily.github.io/Fin-Daily/scripts/article.js"></script>
+
+  <!-- ルーティング補助：?slug=YYYY-MM-DD が無い場合の案内 -->
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      if (!params.get('slug')) {
+        const main = document.getElementById('article');
+        if (main) {
+          main.innerHTML =
+            '<p>表示する記事が指定されていません。<br>' +
+            '例：<code>./article.html?slug=2025-08-14</code></p>';
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
