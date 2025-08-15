@@ -13,38 +13,39 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="https://fin-daily.github.io/Fin-Daily/">
-        <img src="https://via.placeholder.com/40x40?text=FD" alt="FinDaily ロゴ" class="brand-logo" />
-        <span class="brand-name">FinDaily</span>
-      </a>
+    <header class="site-header header--solid bg-header">
+        <div class="container header-inner">
+            <a class="brand text-header" href="https://fin-daily.github.io/Fin-Daily/">
+            <img src="https://via.placeholder.com/40x40?text=FD" alt="FinDaily ロゴ" class="brand-logo" />
+            <span class="brand-name">FinDaily</span>
+            </a>
 
-      <nav class="site-nav" aria-label="グローバルナビ">
-        <a href="https://fin-daily.github.io/Fin-Daily/archive.html" aria-current="page">アーカイブ</a>
-        <a href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
-        <a href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
-        <a href="https://fin-daily.github.io/Fin-Daily/#footer">お問い合わせ</a>
-      </nav>
+            <nav class="site-nav" aria-label="グローバルナビ">
+            <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/archive.html" aria-current="page">アーカイブ</a>
+            <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
+            <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
+            <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#footer">お問い合わせ</a>
+            </nav>
 
-      <button class="theme-toggle" id="theme-toggle" aria-label="テーマ: 自動" title="テーマ切替（自動→ダーク→ライト）">🖥️</button>
+            <div class="stack-8">
+            <button class="theme-toggle" id="theme-toggle" aria-label="テーマ: 自動" title="テーマ切り替え">🖥️</button>
+            <button class="hamburger" id="hamburger" aria-label="メニューを開く"
+                    aria-controls="mobile-nav" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            </div>
+        </div>
+    </header>
 
-      <!-- モバイルメニュー（任意：LPと同じパーツを流用する場合） -->
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く"
-              aria-controls="mobile-nav" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </div>
-  </header>
-  <nav class="mobile-nav" id="mobile-nav" aria-label="モバイルナビ">
-    <a href="https://fin-daily.github.io/Fin-Daily/archive.html" aria-current="page">アーカイブ</a>
-    <a href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
-    <a href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
-    <a href="https://fin-daily.github.io/Fin-Daily/#footer">お問い合わせ</a>
-  </nav>
-  <div class="scrim" id="scrim" aria-hidden="true"></div>
+<nav class="mobile-nav bg-card" id="mobile-nav" aria-label="モバイルナビ">
+  <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/archive.html" aria-current="page">アーカイブ</a>
+  <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
+  <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
+  <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#footer">お問い合わせ</a>
+</nav>
+<div class="scrim" id="scrim" aria-hidden="true"></div>
 
   <!-- Main -->
   <main class="container" style="padding:24px 0 40px;">
