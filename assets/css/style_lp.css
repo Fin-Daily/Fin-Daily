@@ -223,3 +223,27 @@ a:hover{ opacity:.9; }
   .site-nav{ display:none; }      /* PCナビを隠す */
   .hamburger{ display:inline-flex; } /* ハンバーガー表示 */
 }
+
+
+/* ==== Accessibility Contrast Fixes ==== */
+
+/* Ensure all buttons have enough contrast */
+.btn {
+  color: #fff !important; /* Force white text */
+  background-color: var(--brand);
+}
+.btn:hover {
+  background-color: var(--brand-strong);
+}
+
+/* Ensure nav links are readable on dark backgrounds */
+.site-nav a, 
+.mobile-nav a,
+.footer-nav a {
+  color: #fff !important; /* Force white text for visibility */
+}
+
+/* Ensure any card on dark bg has readable text */
+.card {
+  color: #fff !important;
+}
