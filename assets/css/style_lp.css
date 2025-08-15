@@ -173,3 +173,53 @@ a:hover{ opacity:.9; }
   .brand-logo{ background:#e9eef9; }
   .hero-visual, .feature img, .cta-visual{ background:#f3f6fc; }
 }
+
+/* ==== Hamburger Button ==== */
+.hamburger{
+  display:none; /* PCでは非表示、SPで表示 (下の@mediaで切替) */
+  width:44px; height:44px; border-radius:12px;
+  background:#121722; border:1px solid var(--border); color:var(--text);
+  align-items:center; justify-content:center; gap:4px;
+}
+.hamburger:focus{ outline:2px solid var(--brand); outline-offset:2px; }
+.hamburger-line{
+  display:block; width:20px; height:2px; background:var(--text);
+  position:relative;
+}
+.hamburger-line + .hamburger-line{ margin-top:4px; }
+
+/* ==== Mobile Drawer ==== */
+.mobile-nav{
+  position:fixed; inset:0 0 auto auto; /* top/right 固定 */
+  top:64px; right:0;
+  width:min(88%, 320px);
+  height:calc(100dvh - 64px);
+  background:var(--card);
+  border-left:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transform:translateX(100%);
+  transition:transform .18s ease;
+  z-index:1100; padding:16px;
+  display:flex; flex-direction:column; gap:10px;
+}
+.mobile-nav a{
+  padding:12px 10px; border-radius:10px; color:var(--text);
+  border:1px solid transparent;
+}
+.mobile-nav a:hover{ background:#121722; border-color:var(--border); }
+
+/* 背景のスクリーン */
+.scrim{
+  position:fixed; inset:0; background:rgba(0,0,0,.4);
+  opacity:0; pointer-events:none; transition:opacity .18s ease; z-index:1090;
+}
+
+/* 開いた状態 */
+.mobile-nav.is-open{ transform:translateX(0); }
+.scrim.is-open{ opacity:1; pointer-events:auto; }
+
+/* ==== Responsive switch ==== */
+@media (max-width: 960px){
+  .site-nav{ display:none; }      /* PCナビを隠す */
+  .hamburger{ display:inline-flex; } /* ハンバーガー表示 */
+}
