@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>FinDaily | 毎朝1枚で相場がわかる</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 既存CSS（必要に応じてLP用CSSを後で追加） -->
+  <link rel="stylesheet" href="https://fin-daily.github.io/Fin-Daily/assets/css/style_dailyArticles.css" />
+  <link rel="stylesheet" href="https://fin-daily.github.io/Fin-Daily/assets/css/style_lp.css" />
+
+
+  <!-- SEO / OG（必要に応じて動的に上書き） -->
+  <meta name="description" content="毎朝の相場ハイライトを1枚で。S&P500・NASDAQ・為替・商品・主要ニュースを3分でキャッチ。">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FinDaily" />
+  <meta property="og:title" content="FinDaily | 毎朝1枚で相場がわかる" />
+  <meta property="og:description" content="毎朝の相場ハイライトを1枚で。S&P500・NASDAQ・為替・商品・主要ニュースを3分でキャッチ。" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=FinDaily+OG+Image" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@FinDaily_00" />
+</head>
+
+<body>
+  <!-- ===== Header / Global Nav ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://fin-daily.github.io/Fin-Daily/">
+        <img src="https://via.placeholder.com/40x40?text=FD" alt="FinDaily ロゴ" class="brand-logo" />
+        <span class="brand-name">FinDaily</span>
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビ">
+        <a href="https://fin-daily.github.io/Fin-Daily/archive.html">アーカイブ</a>
+        <a href="#features">特徴</a>
+        <a href="#subscribe">通知を受け取る</a>
+        <a href="#footer">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>毎朝1枚で、相場がわかる。</h1>
+        <p>株・為替・コモディティ・主要ニュースを3分で把握。<br>忙しいあなたのための、要点だけのマーケットダイジェスト。</p>
+        <div class="hero-cta">
+          <!-- 後でJSで最新記事URLを差し込む（id=go-latest） -->
+          <a id="go-latest" class="btn btn-primary" href="https://fin-daily.github.io/Fin-Daily/archive.html">最新記事へ</a>
+          <a class="btn" href="https://fin-daily.github.io/Fin-Daily/archive.html">アーカイブを見る</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://via.placeholder.com/1200x600?text=Hero+Image" alt="FinDaily ハイライトのイメージ" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Latest (自動挿入) ===== -->
+  <section class="latest">
+    <div class="container">
+      <h2>最新のサマリー</h2>
+      <!-- /data/index.json から1件をJSで注入 -->
+      <div id="latest" class="latest-card">
+        <p>最新記事を読み込み中…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section id="features" class="features">
+    <div class="container features-grid">
+      <article class="feature">
+        <img src="https://via.placeholder.com/160?text=Icon" alt="" />
+        <h3>要点が3つでわかる</h3>
+        <p>「今日のまとめ」で市場の方向性を即把握。</p>
+      </article>
+      <article class="feature">
+        <img src="https://via.placeholder.com/160?text=Icon" alt="" />
+        <h3>一目で比較できる表</h3>
+        <p>S&P500・NASDAQ・為替・コモディティを横断でチェック。</p>
+      </article>
+      <article class="feature">
+        <img src="https://via.placeholder.com/160?text=Icon" alt="" />
+        <h3>出典リンクで深掘り</h3>
+        <p>主要メディアの一次情報にすぐアクセス。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== CTA / Subscribe ===== -->
+  <section id="subscribe" class="cta">
+    <div class="container cta-inner">
+      <div class="cta-copy">
+        <h2>毎朝7時、あなたの元へ</h2>
+        <p>XやLINEでの配信を準備中。まずはサイトでフォロー。</p>
+      </div>
+      <div class="cta-visual">
+        <img src="https://via.placeholder.com/600x360?text=CTA+Preview" alt="配信イメージ" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer id="footer" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>FinDaily</strong><br />
+        <small>© 2025 Fin Daily</small>
+      </div>
+      <nav class="footer-nav" aria-label="フッターナビ">
+        <a href="https://fin-daily.github.io/Fin-Daily/archive.html">アーカイブ</a>
+        <a href="https://fin-daily.github.io/Fin-Daily/article.html?slug=2025-08-14">デモ記事</a>
+        <a href="#">利用規約</a>
+        <a href="#">プライバシー</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- 後で作る：最新記事差し込み用（/scripts/index.js） -->
+  <!-- <script defer src="https://fin-daily.github.io/Fin-Daily/scripts/index.js?v=1"></script> -->
+</body>
+</html>
