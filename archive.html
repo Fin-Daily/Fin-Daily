@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>アーカイブ | FinDaily</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 既存CSS -->
+  <link rel="stylesheet" href="https://fin-daily.github.io/Fin-Daily/assets/css/style_dailyArticles.css" />
+  <link rel="stylesheet" href="https://fin-daily.github.io/Fin-Daily/assets/css/style_lp.css" />
+
+  <meta name="description" content="FinDaily の過去記事一覧。日付・キーワード・タグで絞り込み。">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://fin-daily.github.io/Fin-Daily/">
+        <img src="https://via.placeholder.com/40x40?text=FD" alt="FinDaily ロゴ" class="brand-logo" />
+        <span class="brand-name">FinDaily</span>
+      </a>
+
+      <nav class="site-nav" aria-label="グローバルナビ">
+        <a href="https://fin-daily.github.io/Fin-Daily/archive.html" aria-current="page">アーカイブ</a>
+        <a href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
+        <a href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
+        <a href="https://fin-daily.github.io/Fin-Daily/#footer">お問い合わせ</a>
+      </nav>
+
+      <!-- モバイルメニュー（任意：LPと同じパーツを流用する場合） -->
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く"
+              aria-controls="mobile-nav" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="モバイルナビ">
+    <a href="https://fin-daily.github.io/Fin-Daily/archive.html" aria-current="page">アーカイブ</a>
+    <a href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
+    <a href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
+    <a href="https://fin-daily.github.io/Fin-Daily/#footer">お問い合わせ</a>
+  </nav>
+  <div class="scrim" id="scrim" aria-hidden="true"></div>
+
+  <!-- Main -->
+  <main class="container" style="padding:24px 0 40px;">
+    <h1 style="margin:0 0 16px;">アーカイブ</h1>
+
+    <!-- フィルタUI -->
+    <section class="latest" style="padding:16px 0;">
+      <div class="latest-card" style="display:grid; gap:12px;">
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input id="q" type="search" placeholder="キーワードを入力（タイトル/タグに一致）"
+                 style="flex:1 1 260px; min-width:220px; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#121722; color:var(--text);" />
+          <input id="from" type="date" style="padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#121722; color:var(--text);" />
+          <input id="to"   type="date" style="padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#121722; color:var(--text);" />
+          <button id="clear" class="btn">クリア</button>
+        </div>
+        <div id="tagbar" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+      </div>
+    </section>
+
+    <!-- 結果 -->
+    <section id="result" class="features" style="padding-top:16px;">
+      <!-- 月見出し + リストがJSで入る -->
+      <div id="list"></div>
+      <div id="pager" style="margin-top:16px; display:flex; justify-content:center;">
+        <button id="more" class="btn">もっと見る</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>FinDaily</strong><br />
+        <small>© 2025 Fin Daily</small>
+      </div>
+      <nav class="footer-nav" aria-label="フッターナビ">
+        <a href="https://fin-daily.github.io/Fin-Daily/">トップ</a>
+        <a href="https://fin-daily.github.io/Fin-Daily/article.html?slug=2025-08-14">デモ記事</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script defer src="https://fin-daily.github.io/Fin-Daily/scripts/nav.js?v=1"></script>
+  <script defer src="https://fin-daily.github.io/Fin-Daily/scripts/archive.js?v=1"></script>
+</body>
+</html>
