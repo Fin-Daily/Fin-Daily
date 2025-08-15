@@ -1,11 +1,11 @@
 /* ============================
-   FinDaily LP Styles (Theming)
+   FinDaily LP Styles (Clean Theming)
    - Token-based theming
    - data-theme="light|dark" overrides
    - fallback: prefers-color-scheme
    ============================ */
 
-/* --- Semantic tokens: Light (default) --- */
+/* ---- Semantic tokens: Light (default) ---- */
 :root{
   color-scheme: light dark; /* UAに両テーマ対応を宣言 */
 
@@ -24,11 +24,14 @@
   --border:rgba(0,0,0,0.08);
   --shadow:0 8px 30px rgba(0,0,0,.09);
 
-  /* Header/Nav helpers */
-  --nav-fg: var(--text);
+  /* Header (always readable) */
+  --header-bg:#ffffff;
+  --header-fg:#0b1220;
+
+  /* Nav helpers */
   --nav-hover-bg: rgba(0,0,0,.06);
 
-  /* Buttons */
+  /* Buttons (default/secondary) */
   --btn-bg: var(--bg-soft);
   --btn-fg: var(--text);
   --btn-border: var(--border);
@@ -37,7 +40,7 @@
   --drawer-bg: var(--card);
 }
 
-/* --- Auto dark when OS prefers dark --- */
+/* ---- Auto dark when OS prefers dark ---- */
 @media (prefers-color-scheme: dark){
   :root{
     --bg:#0c0f14;
@@ -49,7 +52,9 @@
     --border:rgba(255,255,255,0.08);
     --shadow:0 6px 24px rgba(0,0,0,.35);
 
-    --nav-fg: var(--text);
+    --header-bg:#0f141e;
+    --header-fg:#f3f4f6;
+
     --nav-hover-bg: rgba(255,255,255,.06);
 
     --btn-bg: var(--bg-soft);
@@ -60,11 +65,12 @@
   }
 }
 
-/* --- Explicit override (highest priority) --- */
+/* ---- Explicit override (highest) ---- */
 :root[data-theme="light"]{
   --bg:#f8fafc; --bg-soft:#ffffff; --text:#0b1220; --muted:#5b6575;
   --card:#ffffff; --border:rgba(0,0,0,.08); --shadow:0 8px 30px rgba(0,0,0,.09);
-  --nav-fg: var(--text); --nav-hover-bg: rgba(0,0,0,.06);
+  --header-bg:#ffffff; --header-fg:#0b1220;
+  --nav-hover-bg: rgba(0,0,0,.06);
   --btn-bg: var(--bg-soft); --btn-fg: var(--text); --btn-border: var(--border);
   --drawer-bg: var(--card);
   color-scheme: light;
@@ -72,7 +78,8 @@
 :root[data-theme="dark"]{
   --bg:#0c0f14; --bg-soft:#121722; --text:#f3f4f6; --muted:#9aa3b2;
   --card:#0f141e; --border:rgba(255,255,255,0.08); --shadow:0 6px 24px rgba(0,0,0,.35);
-  --nav-fg: var(--text); --nav-hover-bg: rgba(255,255,255,.06);
+  --header-bg:#0f141e; --header-fg:#f3f4f6;
+  --nav-hover-bg: rgba(255,255,255,.06);
   --btn-bg: var(--bg-soft); --btn-fg: var(--text); --btn-border: var(--border);
   --drawer-bg: var(--card);
   color-scheme: dark;
@@ -95,24 +102,21 @@ a:hover{ opacity:.9; }
 /* ===== Header ===== */
 .site-header{
   position:sticky; top:0; z-index:1000;
-  background:linear-gradient(180deg, rgba(12,15,20,.00), rgba(12,15,20,.00)); /* base */
-  backdrop-filter:saturate(140%) blur(8px);
+  background:var(--header-bg);
+  color:var(--header-fg);
   border-bottom:1px solid var(--border);
+  backdrop-filter:saturate(140%) blur(8px);
 }
-:root[data-theme="light"] .site-header{ background:rgba(255,255,255,.90); }
-@media (prefers-color-scheme: dark){
-  .site-header{ background:linear-gradient(180deg, rgba(12,15,20,.95), rgba(12,15,20,.78)); }
-}
-
 .header-inner{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+
 .brand{ display:flex; align-items:center; gap:10px; }
 .brand-logo{ width:36px; height:36px; border-radius:10px; background:#e9eef9; box-shadow:var(--shadow); }
 :root[data-theme="dark"] .brand-logo{ background:#1b2231; }
-.brand-name{ font-weight:700; letter-spacing:.2px; }
+.brand-name{ font-weight:700; letter-spacing:.2px; color:var(--header-fg); }
 
 .site-nav{ display:flex; gap:18px; }
 .site-nav a{
-  color:var(--nav-fg);
+  color:var(--header-fg);
   font-size:.95rem; padding:8px 10px; border-radius:10px;
 }
 .site-nav a:hover{ background:var(--nav-hover-bg); }
