@@ -211,3 +211,21 @@ a:focus-visible, button:focus-visible {
   .market-table { display: none; }
   .market-cards { display: grid; grid-template-columns: 1fr; gap: 8px; }
 }
+
+
+/* ===== data-theme override for article page ===== */
+:root[data-theme="light"] body {
+  background: #fafafa; color: #222;
+}
+:root[data-theme="dark"] body {
+  background: #0f1115; color: #e6e6e6;
+}
+:root[data-theme="dark"] .page-title { color: #e8eef5; }
+:root[data-theme="dark"] .section-title { color: #77bdf8; border-left-color: #77bdf8; }
+:root[data-theme="dark"] .highlight-list { background: #142235; }
+:root[data-theme="dark"] .news-card, 
+:root[data-theme="dark"] .market-card { background: #0f141b; border-color: #1f2937; }
+:root[data-theme="dark"] .source-list a { color: #8cc7ff; border-bottom-color: rgba(140,199,255,.35); }
+:root[data-theme="dark"] .footer-text { color: #9aa4b2; }
+:root[data-theme="dark"] .market-table th, 
+:root[data-theme="dark"] .market-table td { border-color: #1f2937; }
