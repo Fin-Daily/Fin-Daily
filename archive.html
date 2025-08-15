@@ -53,16 +53,19 @@
 
     <!-- フィルタUI -->
     <section class="latest" style="padding:16px 0;">
-        <div class="latest-card" style="display:grid; gap:12px;">
+        <!-- ここに filter-card を付与 -->
+        <div class="latest-card filter-card">
             <div class="input-row">
-            <input id="q" class="input-base" type="search"
-                    placeholder="キーワードを入力（タイトル/タグに一致）"
-                    style="flex:1 1 260px; min-width:220px;" />
-            <input id="from" class="input-base" type="date" />
-            <input id="to"   class="input-base" type="date" />
-            <button id="clear" class="btn">クリア</button>
+                <input id="q"    class="input input--search" type="search"
+                        placeholder="キーワードを入力（タイトル/タグに一致）" />
+                <input id="from" class="input input--date"   type="date" />
+                <input id="to"   class="input input--date"   type="date" />
+
+                <!-- 既存のボタンに見た目クラスだけ追加 -->
+                <button id="clear" class="btn btn--soft">クリア</button>
             </div>
-            <div id="tagbar" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+
+            <div id="tagbar"></div>
         </div>
     </section>
 

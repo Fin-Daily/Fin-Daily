@@ -316,3 +316,91 @@ a:hover{ opacity:.9; }
 }
 
 .input-row{ display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ========== Archive filter polish ========== */
+
+/* 枠カード */
+.filter-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+/* 行レイアウト */
+.input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ベース入力 */
+.input {
+  appearance: none;
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  line-height: 1;
+  font: inherit;
+  min-height: 44px;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.input::placeholder { color: var(--muted); }
+.input:focus {
+  outline: none;
+  border-color: color-mix(in oklab, var(--brand) 50%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 20%, transparent);
+}
+
+/* 検索枠を少し広めに */
+.input--search { flex: 1 1 260px; min-width: 240px; }
+
+/* 日付入力を揃えて、カレンダーアイコンもトーン合わせ */
+.input--date { width: 11.5rem; } /* お好みで */
+.input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: opacity(.65);
+}
+
+/* クリアボタンはソフト外観 */
+.btn--soft {
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+/* タグのチップ風ボタン */
+#tagbar { display: flex; gap: 8px; flex-wrap: wrap; }
+#tagbar .btn {
+  background: var(--bg-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 600;
+}
+#tagbar .btn:hover { filter: saturate(110%); }
+#tagbar .btn[aria-pressed="true"]{
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  border: 0;
+  color: #fff;
+}
+
+/* 一覧カードの見た目を統一（JSはそのまま） */
+.archive-item {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+/* モバイル余白調整 */
+@media (max-width: 560px){
+  .input--date { width: 9.5rem; }
+}
