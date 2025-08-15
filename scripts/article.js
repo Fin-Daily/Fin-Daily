@@ -51,6 +51,35 @@
   }
   const safe = (v) => (v==null || String(v).toLowerCase()==="nan" || String(v)==="") ? "—" : String(v);
 
+    // ---- Sentiment helpers ----
+  function normalizeSentiment(val){
+    // 受け取り例: "bullish" | "bearish" | "neutral" | 1 | 0 | -1 | 0.42 | -0.7
+    if (val == null) return null;
+    if (typeof val === "string"){
+      const s = val.trim().toLowerCase();
+      if (["bullish","positive","up","buy","long","強気"].includes(s)) return {label:"Bullish", cls:"sentiment--bullish", icon:"⬆️"};
+      if (["bearish","negative","down","sell","short","弱気"].includes(s)) return {label:"Bearish", cls:"sentiment--bearish", icon:"⬇️"};
+      if (["neutral","flat","中立"].includes(s)) return {label:"Neutral", cls:"sentiment--neutral", icon:"➡️"};
+    }
+    const n = Number(val);
+    if (!Number.isNaN(n)){
+      if (n > 0.1) return {label:`Bullish ${Math.round(n*100)/100}`, cls:"sentiment--bullish", icon:"⬆️"};
+      if (n < -0.1) return {label:`Bearish ${Math.round(n*100)/100}`, cls:"sentiment--bearish", icon:"⬇️"};
+      return {label:"Neutral", cls:"sentiment--neutral", icon:"➡️"};
+    }
+    return null;
+  }
+
+  function renderSentimentBadge(snt){
+    const info = normalizeSentiment(snt);
+    if (!info) return null;
+    const span = document.createElement("span");
+    span.className = `sentiment-badge ${info.cls}`;
+    span.textContent = `${info.icon} ${info.label}`;
+    return span;
+  }
+
+
   // ==== ルーティング ====
   const params = new URLSearchParams(location.search);
   const slug = params.get("slug");
@@ -146,6 +175,16 @@
           (sec.articles || []).forEach((n, i) => {
             const card = el("article", "news-card");
             card.appendChild(el("h3", "news-title", `📰【${i + 1}】${n.headline || ""}`));
+            const badge = renderSentimentBadge(
+              n.sentiment != null ? n.sentiment : (n.sentiment_score != null ? n.sentiment_score : null)
+            );
+            if (badge){
+              // タイトルのすぐ下（上詰め）に配置
+              const row = document.createElement("div");
+              row.style.margin = "6px 0 2px";
+              row.appendChild(badge);
+              card.appendChild(row);
+            }
             if (n.summary) {
               const p = document.createElement("p");
               p.innerHTML = `<strong>📌 要点:</strong> ${n.summary}`;

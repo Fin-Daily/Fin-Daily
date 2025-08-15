@@ -229,3 +229,23 @@ a:focus-visible, button:focus-visible {
 :root[data-theme="dark"] .footer-text { color: #9aa4b2; }
 :root[data-theme="dark"] .market-table th, 
 :root[data-theme="dark"] .market-table td { border-color: #1f2937; }
+
+/* ==== Sentiment badge ==== */
+.sentiment-badge{
+  display:inline-flex; align-items:center; gap:.4em;
+  padding:.28em .6em; border-radius:999px;
+  font-size:.85rem; font-weight:700; line-height:1;
+  border:1px solid transparent;
+}
+.sentiment--bullish{ background:#e8fff1; color:#126b3f; border-color:rgba(0,0,0,.08); }
+.sentiment--bearish{ background:#fff0f0; color:#9a1b1b; border-color:rgba(0,0,0,.08); }
+.sentiment--neutral{ background:#eef1f7; color:#334155; border-color:rgba(0,0,0,.08); }
+
+@media (prefers-color-scheme: dark){
+  .sentiment--bullish{ background:#0b1f16; color:#95f0c1; border-color:rgba(255,255,255,.08); }
+  .sentiment--bearish{ background:#2a0f10; color:#ffb3b3; border-color:rgba(255,255,255,.08); }
+  .sentiment--neutral{ background:#0f141b; color:#cbd5e1; border-color:rgba(255,255,255,.08); }
+}
+
+/* 記事ページ：ヘッダーの下に少し余白 */
+.article-container{ padding-top: 18px; }

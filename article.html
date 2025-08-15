@@ -5,10 +5,11 @@
   <title>記事 | FinDaily</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- 既存のスタイルを流用（必要に応じて変更） -->
+  <!-- スタイル: 記事CSS + LP共通CSS（ヘッダー/フッター/UI） -->
   <link rel="stylesheet" href="https://fin-daily.github.io/Fin-Daily/assets/css/style_dailyArticles.css" />
+  <link rel="stylesheet" href="https://fin-daily.github.io/Fin-Daily/assets/css/style_lp.css" />
 
-  <!-- SEO（JSでJSONのseo値から上書き） -->
+  <!-- SEO（article.jsでJSONのseo値から上書き） -->
   <meta name="description" content="毎朝の相場ハイライトを1枚で。" />
   <link rel="canonical" href="./article.html" />
 
@@ -18,7 +19,6 @@
   <meta property="og:title" content="FinDaily" />
   <meta property="og:description" content="毎朝の相場ハイライトを1枚で。" />
   <meta property="og:image" content="https://fin-daily.github.io/Fin-Daily/assets/images/XCard.png" />
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@FinDaily_00" />
   <meta name="twitter:title" content="FinDaily" />
@@ -26,23 +26,68 @@
   <meta name="twitter:image" content="https://fin-daily.github.io/Fin-Daily/assets/images/XCard.png" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1 id="page-title" class="page-title">読み込み中…</h1>
-    </header>
+  <!-- ===== Header（LPと同じ） ===== -->
+  <header class="site-header header--solid bg-header">
+    <div class="container header-inner">
+      <a class="brand text-header" href="https://fin-daily.github.io/Fin-Daily/">
+        <img src="https://via.placeholder.com/40x40?text=FD" alt="FinDaily ロゴ" class="brand-logo" />
+        <span class="brand-name">FinDaily</span>
+      </a>
 
-    <!-- 記事本体をここに描画 -->
+      <nav class="site-nav" aria-label="グローバルナビ">
+        <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/archive.html">アーカイブ</a>
+        <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
+        <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
+        <a class="nav-link" href="#footer">お問い合わせ</a>
+      </nav>
+
+      <div class="stack-8">
+        <button class="theme-toggle" id="theme-toggle" aria-label="テーマ: 自動" title="テーマ切替（自動→ダーク→ライト）">🖥️</button>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-controls="mobile-nav" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- モバイル用ドロワー -->
+  <nav class="mobile-nav bg-card" id="mobile-nav" aria-label="モバイルナビ">
+    <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/archive.html">アーカイブ</a>
+    <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#features">特徴</a>
+    <a class="nav-link" href="https://fin-daily.github.io/Fin-Daily/#subscribe">通知を受け取る</a>
+    <a class="nav-link" href="#footer">お問い合わせ</a>
+  </nav>
+  <div class="scrim" id="scrim" aria-hidden="true"></div>
+
+  <div class="container article-container">
+    <h1 id="page-title" class="page-title">読み込み中…</h1>
     <main id="article"></main>
-
-    <footer>
-      <p class="footer-text">© 2025 Fin Daily</p>
-    </footer>
   </div>
+
+  <!-- ===== Footer（LPと同じテイスト） ===== -->
+  <footer id="footer" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>FinDaily</strong><br />
+        <small>© 2025 Fin Daily</small>
+      </div>
+      <nav class="footer-nav" aria-label="フッターナビ">
+        <a href="https://fin-daily.github.io/Fin-Daily/archive.html">アーカイブ</a>
+        <a href="#">利用規約</a>
+        <a href="#">プライバシー</a>
+      </nav>
+    </div>
+  </footer>
 
   <!-- 記事レンダラ -->
   <script defer src="https://fin-daily.github.io/Fin-Daily/scripts/article.js"></script>
+  <!-- ヘッダーUI（LPと同じJS） -->
+  <script defer src="https://fin-daily.github.io/Fin-Daily/scripts/nav.js?v=1"></script>
+  <script defer src="https://fin-daily.github.io/Fin-Daily/scripts/theme.js?v=1"></script>
 
-  <!-- ルーティング補助：?slug=YYYY-MM-DD が無い場合の案内 -->
+  <!-- slug未指定のときの案内 -->
   <script>
     (function () {
       const params = new URLSearchParams(location.search);
