@@ -231,7 +231,6 @@
         root.appendChild(wrap);
       });
 
-      showStatus("描画完了");
     })
     .catch((err) => {
       console.error(err);
