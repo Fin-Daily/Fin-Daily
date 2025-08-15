@@ -249,3 +249,168 @@ a:focus-visible, button:focus-visible {
 
 /* 記事ページ：ヘッダーの下に少し余白 */
 .article-container{ padding-top: 18px; }
+
+/* === header 下の余白（sticky/solid/overlay すべてに効く） === */
+/* LPのグローバルヘッダー(.site-header)がある場合に効かせる */
+.site-header + .container,
+.site-header + .article-container{
+  /* 端末幅に応じて気持ち広めに確保 */
+  padding-top: clamp(20px, 4vw, 44px);
+}
+
+/* overlayバリアントで重なりやすいケースの保険（必要なときだけ） */
+.header--overlay + .container,
+.header--overlay + .article-container{
+  padding-top: 72px; /* header高さぶん持ち上げる */
+}
+
+/* 記事タイトルがくっつく場合の微調整（既存marginを上に少し付与） */
+.page-title{
+  margin-top: clamp(6px, 1.6vw, 14px);
+}
+
+/* 最初のセクションが詰まる場合の保険 */
+.sec:first-of-type{
+  margin-top: clamp(6px, 1.6vw, 12px);
+}
+
+/* === ニュースカード内の出典リンク === */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-top: 6px;
+  color: #0069c2;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0,105,194,.35);
+  padding-bottom: 1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.source-link:hover {
+  color: #004a8f;
+  border-bottom-color: rgba(0,74,143,.5);
+}
+.source-link .link-icon {
+  font-size: 0.85em;
+  opacity: 0.75;
+  transition: transform 0.15s ease;
+}
+.source-link:hover .link-icon {
+  transform: translateY(-1px);
+}
+
+/* ダークモード用 */
+@media (prefers-color-scheme: dark) {
+  .source-link {
+    color: #8cc7ff;
+    border-bottom-color: rgba(140,199,255,.35);
+  }
+  .source-link:hover {
+    color: #aad4ff;
+    border-bottom-color: rgba(170,212,255,.5);
+  }
+}
+
+/* =========================================
+   Article page theming without !important
+   - body.article-page をラッパにして上書き
+   - style_lp.css の CSS変数 (--bg, --text, …) を優先使用
+   - data-theme="dark|light" が無い環境でも prefers-color-scheme で暗色化
+   ========================================= */
+
+.article-page{
+  /* LPトークンが未読込でもフォールバックするエイリアス */
+  --a-bg:     var(--bg, #fafafa);
+  --a-text:   var(--text, #222);
+  --a-muted:  var(--muted, #5b6575);
+  --a-card:   var(--card, #ffffff);
+  --a-border: var(--border, #e6e6e6);
+  --a-brand:  var(--brand, #0077cc);
+}
+
+/* OSがダークの時のフォールバック（data-themeがあればそちらが勝ちます） */
+@media (prefers-color-scheme: dark){
+  .article-page{
+    --a-bg:     var(--bg, #0f1115);
+    --a-text:   var(--text, #e6e6e6);
+    --a-muted:  var(--muted, #9aa3b2);
+    --a-card:   var(--card, #0f141b);
+    --a-border: var(--border, #1f2937);
+    --a-brand:  var(--brand, #77bdf8);
+  }
+}
+
+/* ===== Base ===== */
+.article-page{ background: var(--a-bg); color: var(--a-text); }
+.article-page .page-title{
+  color: color-mix(in oklab, var(--a-text) 92%, transparent);
+}
+.article-page .section-title{
+  color: var(--a-brand);
+  border-left-color: var(--a-brand);
+}
+.article-page .highlight-list{
+  background: color-mix(in oklab, var(--a-brand) 12%, transparent);
+}
+
+/* ===== Market tables ===== */
+.article-page .market-table{
+  background: var(--a-card);
+  border: 1px solid var(--a-border);
+}
+.article-page .market-table th,
+.article-page .market-table td{
+  background: var(--a-card);
+  border-color: var(--a-border);
+  color: var(--a-text);
+}
+.article-page .market-table tr:nth-child(even) td{
+  /* うっすら行ストライプ */
+  background: color-mix(in oklab, var(--a-card) 92%, var(--a-bg));
+}
+
+/* ===== Cards (news & market small) ===== */
+.article-page .news-card,
+.article-page .market-card{
+  background: var(--a-card);
+  border: 1px solid var(--a-border);
+  border-left: 5px solid color-mix(in oklab, var(--a-text) 35%, transparent); /* 左帯の控えめトーン */
+  color: var(--a-text);
+}
+.article-page .news-title{
+  color: color-mix(in oklab, var(--a-text) 92%, transparent);
+}
+.article-page .market-card .latest{
+  color: color-mix(in oklab, var(--a-text) 80%, transparent);
+}
+
+/* ===== details/summary (toggle) ===== */
+.article-page .toggle{
+  background: var(--a-card);
+  border-color: var(--a-border);
+}
+.article-page .toggle-content{ border-top-color: var(--a-border); }
+.article-page .toggle-summary::before{
+  border-color: color-mix(in oklab, var(--a-text) 70%, transparent);
+}
+
+/* ===== 出典リンク（既に導入済の .source-link に追従） ===== */
+.article-page .source-link{
+  color: color-mix(in oklab, var(--a-brand) 92%, var(--a-text));
+  border-bottom-color: color-mix(in oklab, var(--a-brand) 45%, transparent);
+}
+.article-page .source-link:hover{
+  color: color-mix(in oklab, var(--a-brand) 100%, var(--a-text));
+  border-bottom-color: color-mix(in oklab, var(--a-brand) 60%, transparent);
+}
+
+/* ===== センチメントバッジ（既存色を変えたい場合のみ） ===== */
+/* 既存の .sentiment--* がOKならこのブロックは不要です。ブランド寄せするなら例： */
+/*
+.article-page .sentiment--bullish{ background: color-mix(in oklab, #10b981 18%, transparent); color:#0b3a2d; }
+@media (prefers-color-scheme: dark){
+  .article-page .sentiment--bullish{ background: color-mix(in oklab, #10b981 18%, transparent); color:#9bf3cd; }
+}
+*/
+

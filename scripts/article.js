@@ -201,11 +201,15 @@
               card.appendChild(p2);
             }
             if (n.source?.url) {
-              const a = document.createElement("a");
-              a.href = n.source.url; a.target = "_blank"; a.rel = "noopener";
-              a.textContent = n.source.name || "Source";
-              card.appendChild(a);
+              const link = document.createElement("a");
+              link.href = n.source.url;
+              link.target = "_blank";
+              link.rel = "noopener";
+              link.className = "source-link"; // 新しいクラス
+              link.innerHTML = `🔗 ${n.source.name || "Source"} <span class="link-icon">↗</span>`;
+              card.appendChild(link);
             }
+
             list.appendChild(card);
           });
           wrap.appendChild(list);
