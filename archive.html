@@ -53,17 +53,19 @@
 
     <!-- フィルタUI -->
     <section class="latest" style="padding:16px 0;">
-      <div class="latest-card" style="display:grid; gap:12px;">
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <input id="q" type="search" placeholder="キーワードを入力（タイトル/タグに一致）"
-                 style="flex:1 1 260px; min-width:220px; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#121722; color:var(--text);" />
-          <input id="from" type="date" style="padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#121722; color:var(--text);" />
-          <input id="to"   type="date" style="padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:#121722; color:var(--text);" />
-          <button id="clear" class="btn">クリア</button>
+        <div class="latest-card" style="display:grid; gap:12px;">
+            <div class="input-row">
+            <input id="q" class="input-base" type="search"
+                    placeholder="キーワードを入力（タイトル/タグに一致）"
+                    style="flex:1 1 260px; min-width:220px;" />
+            <input id="from" class="input-base" type="date" />
+            <input id="to"   class="input-base" type="date" />
+            <button id="clear" class="btn">クリア</button>
+            </div>
+            <div id="tagbar" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
         </div>
-        <div id="tagbar" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
-      </div>
     </section>
+
 
     <!-- 結果 -->
     <section id="result" class="features" style="padding-top:16px;">

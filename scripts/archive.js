@@ -120,16 +120,16 @@
 
       const a = document.createElement('a');
       a.href = slugUrl(it.slug);
-      a.className = 'card';
+      // 見た目はクラスで統一（テーマ準拠）
+      a.className = 'card card-base';
       a.style.display = 'grid';
       a.style.gridTemplateColumns = '1fr auto';
       a.style.alignItems = 'center';
       a.style.gap = '12px';
       a.style.margin = '6px 0';
       a.style.padding = '12px 14px';
-      a.style.border = '1px solid var(--border)';
-      a.style.borderRadius = '12px';
-      a.style.background = '#121722';
+      // 背景/枠/角丸は card-base に委ねる
+
 
       const t = document.createElement('div');
       t.className = 'title';
